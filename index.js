@@ -33,8 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const launcher = document.createElement('p');
                 launcher.textContent = `Launcher: ${satellite.launcher}`
-
-               
+                
+                // Append the satellite data elements to the DOM.
+                satellitesContainer.appendChild(satelliteId);
+                satelliteData.appendChild(country);
+                satelliteData.appendChild(launchDate);
+                satelliteData.appendChild(mass);
+                satelliteData.appendChild(launcher);
+                satelliteId.appendChild(satelliteData);
+                container.appendChild(satellitesContainer);
 
             });
         } else {
