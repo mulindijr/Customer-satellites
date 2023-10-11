@@ -34,6 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const launcher = document.createElement('p');
                 launcher.textContent = `Launcher: ${satellite.launcher}`
                 
+                // Add a click event listener to toggle the visibility of satellite data.
+                satelliteId.addEventListener('click', () => {
+                    if (satelliteData.style.display === 'block') {
+                        satelliteData.style.display = 'none';
+                      } else {
+                        satelliteData.style.display = 'block';
+                    }
+                })
+                
                 // Append the satellite data elements to the DOM.
                 satellitesContainer.appendChild(satelliteId);
                 satelliteData.appendChild(country);
