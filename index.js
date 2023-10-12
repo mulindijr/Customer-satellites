@@ -35,7 +35,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     const launcher = document.createElement('p');
                     launcher.textContent = `Launcher: ${satellite.launcher}`;
 
-                  
+                    // Create a display area for comments
+                    function fetchAndDisplayComments() {
+                        fetch('http://localhost:3000/comments')
+                            .then(res => res.json())
+                            .then(comments => {
+                                comments.forEach(comment => {
+                                    const displayComment = document.createElement('p');
+                                    displayComment.className = 'comment-display';
+                                    displayComment.textContent = `Comment: ${comment.text}`;
+                                    const commentId = comment.id;
+                                
+                                    // Create a unique ID for the comment element, e.g., 'comment-1', 'comment-2', etc.
+                                    displayComment.id = `comment-${commentId}`;
+                                
+                                    // Append the comment to the appropriate satelliteData
+                                    satelliteData.appendChild(displayComment);
+                                    
+                                    
+                                });
+                            })
+                        .catch(error => {
+                            console.error("Error fetching comments:", error);
+                        });
+                    }
+                
+                    // Fetch and display comments initially
+                    fetchAndDisplayComments();
 
                     // Create a comment section
                     const commentSection = document.createElement('form');
@@ -64,8 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('API response is not an array');
             }
         })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
- 
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+   
+    
 });
