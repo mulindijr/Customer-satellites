@@ -94,6 +94,30 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching data:', error);
         });
 
-   
+    // Handle the comment form submission
+    container.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const commentInput = e.target.querySelector('#comment-input');
+        const comment = commentInput.value;
+
+        // Post the new comment
+        fetch('http://localhost:3000/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: comment}),
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            
+        })
+        .catch(error => {
+            console.error("Error posting comment:", error);
+        });
+
+        commentInput.value = '';
+    });
     
 });
