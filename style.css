@@ -9,6 +9,10 @@ body h1{
 body{
     background-color: #ccc;
 }
+.satellites-container{
+    margin-left: 130px;
+
+}
 /* Styles for individual satellite list items within the '.satellites-container' */
 .satellites-container li, .satellite-data{
     list-style-type: none;
