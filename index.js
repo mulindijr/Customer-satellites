@@ -48,13 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
                                     displayComment.className = 'comment-display';
                                     displayComment.textContent = `Comment: ${comment.text}`;
                                     const commentId = comment.id;
+
+                                    const deleteComment = document.createElement('button')
+                                    deleteComment.className = 'delete-btn'
+                                    deleteComment.textContent = 'delete'
+
+                                    deleteComment.addEventListener('click',() => {
+                                        deleteButton(commentId)
+                                    })
                                 
                                     // Create a unique ID for the comment element, e.g., 'comment-1', 'comment-2', etc.
                                     displayComment.id = `comment-${commentId}`;
                                 
                                     // Append the comment to the appropriate satelliteData
                                     satelliteData.appendChild(displayComment);
-                                    
+                                    displayComment.appendChild(deleteComment)
                                     
                                 });
                             })
@@ -123,5 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         commentInput.value = '';
     });
-    
 });
