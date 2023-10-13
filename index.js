@@ -131,4 +131,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         commentInput.value = '';
     });
+
+    function deleteButton(id) {
+        fetch(`http://localhost:3000/comments/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.status === 204) {
+                    // Successful deletion (No Content)
+                    console.log('Comment deleted successfully.');
+                    const commentElement = document.getElementById(`comment-${id}`);
+                    if (commentElement) {
+                        commentElement.remove();
+                    }
+                    window.location.reload(false)
+                } else if (res.status === 404) {
+                    console.error('Comment not found.');
+                } else {
+                    console.error('An error occurred while deleting the comment.');
+                }
+            })
+        .catch(error => {
+            console.error('Error deleting comment:', error);
+        });
+        
+    }
+    
 });
