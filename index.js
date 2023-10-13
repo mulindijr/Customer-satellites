@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Create an element to display the satellite ID.
                     const satelliteId = document.createElement('li');
-                    satelliteId.textContent = `Satellite ID: ${satellite.id}`;
+                    satelliteId.textContent = satellite.id;
 
                     // Create a container for satellite data.
                     const satelliteData = document.createElement('div');
@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     satelliteData.id = `satellite-${satellite.id}`;
 
                     // Create elements to display specific satellite data.
+                    const satelliteName = document.createElement('p');
+                    satelliteName.textContent = `Satellite Name: ${satellite.id}`;
+
                     const country = document.createElement('p');
                     country.textContent = `Country: ${satellite.country}`;
 
@@ -77,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     // Append the satellite data elements to the DOM.
+                    satelliteData.appendChild(satelliteName)
                     satelliteData.appendChild(country);
                     satelliteData.appendChild(launchDate);
                     satelliteData.appendChild(mass);
